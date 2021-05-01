@@ -1,0 +1,18 @@
+.navbar{
+    background-color: #FFC107 !important;
+    height: 80px;
+    position:relative;
+    top:0;
+    left:0;
+    z-index: 100;
+}
+
+.navbar a{
+    position: absolute;
+    top:-18px;
+    left:70px;
+}
+
+button{
+    background-color: #C7C7C7;
+}

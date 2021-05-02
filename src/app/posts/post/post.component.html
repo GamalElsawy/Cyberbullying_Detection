@@ -1,1 +1,27 @@
-<p>post works!</p>
+<div class="post container bg-white p-2 col-xl-8 col-md-6 col-sm-12 ">
+    <div class="row mt-4">
+        <div class="user-info">
+            <div class="mb-3 img-box">
+                <img src="http://simpleicon.com/wp-content/uploads/user1.png"  height="100px">
+            </div>
+            <h4>bassam sabber</h4>
+        </div>
+      
+      <div class="my-4 col-12 p-4">
+        <div class="mb-2 p-4 post-content">
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                Maxime ut excepturi ullam officiis sapiente sed eius, 
+                laborum nostrum repellendus vitae tenetur sint incidunt 
+                aspernatur, pariatur totam blanditiis, laboriosam eum ab?
+            </p>
+        </div>
+        <p class="text-right"><span>{{ date | date}}</span>&nbsp;<span>{{ date | date:'h:mm a ' }}</span></p>
+      </div>
+      <div class="mb-3 ml-4 col-12">
+        <button mat-icon-button class="comment">
+          <mat-icon>chat</mat-icon> 
+        </button>
+      </div>
+    </div>
+</div>

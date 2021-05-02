@@ -1,1 +1,19 @@
-<p>posts works!</p>
+<div class="post container bg-white p-2  position-relative col-xl-8 col-md-6 col-sm-12">
+    <div class="row mt-4">
+      <div class="mb-3 img-box">
+        <img [src]="account.Image"  height="100px">
+      </div>
+      <div class="my-4 col-12 p-4">
+        <textarea class="form-control mb-2" id="exampleFormControlTextarea1"  rows="6" placeholder="Write Your post?"></textarea>
+        <!--<p class="text-right"><span>{{ date | date}}</span>&nbsp;<span>{{ date | date:'h:mm a ' }}</span></p>-->
+      </div>
+      <div class="mb-3 col-12">
+        <button type="button" class="btn btn-secondary ml-auto d-block">Post</button>
+      </div>
+    </div>
+</div>
+
+<hr class="col-md-6 mt-5">
+
+<app-post></app-post>
+  

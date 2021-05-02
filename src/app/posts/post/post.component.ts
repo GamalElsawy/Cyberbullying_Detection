@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostComponent implements OnInit {
 
+
+  date : number = Date.now();
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-posts',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
+  @Input() account;
+
+  date : number = Date.now();
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

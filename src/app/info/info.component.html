@@ -1,39 +1,39 @@
-<mat-sidenav-container>
-  <mat-sidenav mode="side" #sideNav>
-    <div class="cotainer mt-5 overflow-hidden">
-       <div class="row">
-         <div class="imgBox col-12">
-           <img [src]="acc.Image"  height="100px">
+<div class="content">
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" #sideNav>
+      <div class="position-relative">
+      <div class="cotainer mt-5 overflow-hidden position-fixed about">
+         <div class="row">
+           <div class="imgBox col-12">
+             <img [src]="acc.Image"  height="100px">
+           </div>
+           <div class="about col-12 text-center">
+              <h2 >{{ acc.Name }}</h2>
+              <h4>{{ acc.EMail }}</h4>
+              <h4>{{ acc.Address }}</h4>
+              <h4>{{ acc.Phone }}</h4>
+           </div>
          </div>
-         <div class="about col-12 text-center">
-            <h2 >{{ acc.Name }}</h2>
-            <h4>{{ acc.EMail }}</h4>
-            <h4>{{ acc.Address }}</h4>
-            <h4>{{ acc.Phone }}</h4>
+         <div class="col-12 mt-5">
+          <button mat-fab color="primary" class="d-block m-auto" aria-label="Example icon button with a delete icon">
+            <mat-icon>meeting_room</mat-icon>
+          </button>
          </div>
-       </div>
-       <div class="col-12 mt-5">
-        <button mat-fab color="primary" class="d-block m-auto" aria-label="Example icon button with a delete icon">
-          <mat-icon>meeting_room</mat-icon>
-        </button>
-       </div>
+      </div>
     </div>
-
-    
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <app-posts></app-posts>
-
-
-    
-    <button class="btn hamburger hamburger--arrow " [class.is-active] = "opened" type="button" (click) = "sideNav.toggle();opened =!opened">
-      <span class="hamburger-box">
-        <span class="hamburger-inner text-white"></span>
-      </span>
-    </button>
-
-
-    
-    <!--<button class="btn" (click) = "sideNav.toggle()">>></button>-->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-posts [account] = "acc"></app-posts>
+  
+      <button class="btn hamburger hamburger--arrow d-block overflow-hidden " [class.open]="opened" [class.is-active] = "opened" type="button" (click) = "sideNav.toggle();opened =!opened">
+        <span class="hamburger-box ">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+  
+      <!--<button class="btn" (click) = "sideNav.toggle()">>></button>-->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+</div>

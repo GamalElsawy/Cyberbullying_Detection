@@ -1,23 +1,29 @@
 .post{
     margin-top: 100px;
-    -webkit-box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
-    -moz-box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
-    box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
+    transition:all 0.5s;
+}
+.rowPost{
+  transition: all 0.5s;
+}
+
+.rowPost:hover{
+  -webkit-box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
+  box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
 }
 .user-info{
     position: absolute;
-    top: -65px;
+    top: -40px;
     left: 15px;
     display:flex;
 }
 .img-box{
-    border: 1px solid black;
+    border: 2px solid #FFC107;
     border-radius:60px;
-    padding: 6px;
-    background-color: white;
+    background:linear-gradient(to right,#FFC107,purple);
 }
 .user-info h4{
-   margin:38px 0px 0px 16px;
+   margin:44px 0px 0px 16px;
    font-weight: bold;
    text-transform: capitalize;
    font-size: 20px;
@@ -37,7 +43,11 @@
     font-weight: 400;
 }
 
-.comment mat-icon{
-  font-size: 40px;
+
+.commentBtn mat-icon{
+  font-size: 35px;
   color:purple;
 }
+
+
+

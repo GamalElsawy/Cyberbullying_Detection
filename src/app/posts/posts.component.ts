@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Post } from '../Models/post.model';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-posts',
@@ -9,11 +11,13 @@ export class PostsComponent implements OnInit {
 
   @Input() account;
 
-  date : number = Date.now();
-  constructor() { }
+  posts : Post [] = [];
+  constructor(public postService:PostService) { }
 
   ngOnInit(): void {
-    
+    this.posts = this.postService.get();
   }
+
+ 
 
 }

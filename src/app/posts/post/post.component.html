@@ -1,27 +1,39 @@
-<div class="post container bg-white p-2 col-xl-8 col-md-6 col-sm-12 ">
-    <div class="row mt-4">
+<div class="post container p-2 col-xl-8 col-md-6 col-12 ">
+    <div class="row rowPost bg-white mt-4">
         <div class="user-info">
-            <div class="mb-3 img-box">
-                <img src="http://simpleicon.com/wp-content/uploads/user1.png"  height="100px">
+            <div class="mb-3 img-box p-1 ">
+                <img [src]="post.user.Image" class="rounded-circle" height="100px" width="100px">
             </div>
-            <h4>bassam sabber</h4>
+            <h4>{{ post.user.Name }}</h4>
         </div>
       
-      <div class="my-4 col-12 p-4">
-        <div class="mb-2 p-4 post-content">
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                Maxime ut excepturi ullam officiis sapiente sed eius, 
-                laborum nostrum repellendus vitae tenetur sint incidunt 
-                aspernatur, pariatur totam blanditiis, laboriosam eum ab?
-            </p>
+      <div class=" col-12 p-4">
+        <div class=" p-4 post-content">
+            <p>{{ post.description }}</p>
         </div>
-        <p class="text-right"><span>{{ date | date}}</span>&nbsp;<span>{{ date | date:'h:mm a ' }}</span></p>
+        <p class="text-right "><span class="bg-secondary text-white p-2">{{ post.dateAdded | date}}&nbsp;{{ post.dateAdded | date:'h:mm a ' }}</span></p>
       </div>
-      <div class="mb-3 ml-4 col-12">
+      <!--
+      <div class=" ml-4 col-12">
         <button mat-icon-button class="comment">
           <mat-icon>chat</mat-icon> 
         </button>
       </div>
+    -->
+    </div>
+    <div class="col-12 overflow-hidden">
+      <mat-expansion-panel hideToggle [class.mat-expansion-panel] = "false">
+        <mat-expansion-panel-header>
+          <button mat-icon-button class="commentBtn">
+            <mat-icon>chat</mat-icon> 
+          </button>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent class="overflow-hidden">
+        <app-comments [post] = "post"></app-comments>
+        </ng-template>          
+      </mat-expansion-panel>
     </div>
 </div>
+
+
+

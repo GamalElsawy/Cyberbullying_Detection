@@ -1,26 +1,39 @@
 .post{
     margin-top: 100px;
+    /*
     -webkit-box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
     -moz-box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
     box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
+    */
 }
 .img-box{
+  /*
     position: absolute;
     top: -65px;
-    left: 15px;
-    border: 1px solid black;
+    left: 15px;*/
+    border: 2px solid #FFC107;
     border-radius:60px;
-    padding: 6px;
-    background-color: white;
+    background:linear-gradient(to right,#FFC107,purple);
+    padding:3px;
   }
 
   textarea{
     resize:none;
-    border:none;
-    outline:none;
-    border-bottom:0.5px solid #eee;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
-    padding:10px
+    padding:10px;
+    background:transparent;
+    overflow: auto;
   }
+
+ 
+
+
+
   
+  button{
+    transition: all 0.5s;
+  }
+  button:hover{
+    transform: skew(15deg,0deg);
+  }

@@ -1,19 +1,25 @@
-<div class="post container bg-white p-2  position-relative col-xl-8 col-md-6 col-sm-12">
+<div class="post container border  p-2  position-relative col-xl-8 col-md-6 col-12">
     <div class="row mt-4">
-      <div class="mb-3 img-box">
-        <img [src]="account.Image"  height="100px">
+      <div class="img-box ml-4">
+        <img [src]="account.Image" class="rounded-circle"  height="80px" width="80px">
       </div>
-      <div class="my-4 col-12 p-4">
-        <textarea class="form-control mb-2" id="exampleFormControlTextarea1"  rows="6" placeholder="Write Your post?"></textarea>
-        <!--<p class="text-right"><span>{{ date | date}}</span>&nbsp;<span>{{ date | date:'h:mm a ' }}</span></p>-->
+      <div class=" col-12 p-4">
+        <mat-form-field appearance="fill" class="col-12">
+          <mat-label>Write Your Post ?</mat-label>
+          <textarea matInput class="mb-2" rows="10"></textarea>
+        </mat-form-field>
       </div>
-      <div class="mb-3 col-12">
-        <button type="button" class="btn btn-secondary ml-auto d-block">Post</button>
+      <div class=" col-12">
+        <button type="button" mat-flat-button class="btn btn-secondary ml-auto d-block">Post<mat-icon class="mb-1 ml-1">add_circle</mat-icon></button>
       </div>
     </div>
 </div>
 
 <hr class="col-md-6 mt-5">
 
-<app-post></app-post>
+
+
+
+
+<app-post *ngFor="let post of posts" [post] = "post"></app-post>
   

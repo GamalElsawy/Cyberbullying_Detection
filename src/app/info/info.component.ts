@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Account } from '../Model/Account';
+import { User } from '../Models/user.model';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -8,20 +9,14 @@ import { Account } from '../Model/Account';
 
 export class InfoComponent implements OnInit {
 
-  acc : Account = {
-    Name : "Bassam",
-    Address:"62 elmaadi cairo",
-    EMail:"BassamSaber@gmail.com",
-    Image:"http://simpleicon.com/wp-content/uploads/user1.png",
-    Password:"111111",
-    Phone:"01141248413"
-  };
+  user:User;
 
   opened=false;
   
-  constructor() { }
+  constructor(public userService:UserService) { }
 
   ngOnInit(): void {
+    this.user = this.userService.get()[0];
   }
 
 }

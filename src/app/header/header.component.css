@@ -1,9 +1,6 @@
 .navbar{
     background-color: #FFC107 !important;
     height: 80px;
-    position:relative;
-    top:0;
-    left:0;
     z-index: 100;
 }
 

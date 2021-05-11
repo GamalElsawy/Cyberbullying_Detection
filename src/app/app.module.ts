@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './matrial.module';
+import { CommentsComponent } from './posts/post/comments/comments.component';
+import { CommentComponent } from './posts/post/comments/comment/comment.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { MaterialModule } from './matrial.module';
     HeaderComponent,
     InfoComponent,
     PostsComponent,
-    PostComponent
+    PostComponent,
+    CommentsComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

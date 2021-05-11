@@ -75,10 +75,14 @@ button.open{
   width:100%;
 }
 
+
+
 img{
+  background:linear-gradient(to right,#FFC107,purple);
   display: block;
   margin: auto;
-  border: 1px solid black;
+  border: 2px solid #FFC107;
   border-radius: 60px;
-  padding: 6px;
+  padding:3px;
 }
+

@@ -4,14 +4,16 @@
       <div class="position-relative">
       <div class="cotainer mt-5 overflow-hidden position-fixed about">
          <div class="row">
-           <div class="imgBox col-12">
-             <img [src]="acc.Image"  height="100px">
+           <div class="imgContainer col-12">
+             <div class="imgBox">
+              <img [src]="user.Image" class="rounded-circle"  height="100px" width="100px">
+             </div>
            </div>
            <div class="about col-12 text-center">
-              <h2 >{{ acc.Name }}</h2>
-              <h4>{{ acc.EMail }}</h4>
-              <h4>{{ acc.Address }}</h4>
-              <h4>{{ acc.Phone }}</h4>
+              <h2 >{{ user.Name }}</h2>
+              <h4>{{ user.EMail }}</h4>
+              <h4>{{ user.Address }}</h4>
+              <h4>{{ user.Phone }}</h4>
            </div>
          </div>
          <div class="col-12 mt-5">
@@ -24,9 +26,9 @@
   
     </mat-sidenav>
     <mat-sidenav-content>
-      <app-posts [account] = "acc"></app-posts>
+      <app-posts [account] = "user"></app-posts>
   
-      <button class="btn hamburger hamburger--arrow d-block overflow-hidden " [class.open]="opened" [class.is-active] = "opened" type="button" (click) = "sideNav.toggle();opened =!opened">
+      <button class="btn hamburger hamburger--arrow d-block overflow-hidden  " [class.open]="opened" [class.is-active] = "opened" type="button" (click) = "sideNav.toggle();opened =!opened">
         <span class="hamburger-box ">
           <span class="hamburger-inner"></span>
         </span>

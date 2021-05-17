@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
 const UserSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
-        required: [true, 'Please add a name'],
+        required: [true, 'Please add a username'],
       },
       email: {
         type: String,
@@ -17,10 +17,13 @@ const UserSchema = new mongoose.Schema({
           'Please add a valid email',
         ],
       },
-      role: {
+      address: {
         type: String,
-        enum: ['user', 'publisher'],
-        default: 'user',
+        required: [true, 'Please add an address'],
+      },
+      phone: {
+        type: String,
+        required: [true, 'Please add an address'],
       },
       password: {
         type: String,
@@ -30,17 +33,6 @@ const UserSchema = new mongoose.Schema({
       },
       resetPasswordToken: String,
       resetPasswordExpire: Date,
-      confirmEmailToken: String,
-      isEmailConfirmed: {
-        type: Boolean,
-        default: false,
-      },
-      twoFactorCode: String,
-      twoFactorCodeExpire: Date,
-      twoFactorEnable: {
-        type: Boolean,
-        default: false,
-      },
       createdAt: {
         type: Date,
         default: Date.now,

@@ -2,10 +2,12 @@
   position: relative;
   top:0px;
   left:0px;
+  font-family: 'Cairo', sans-serif;
+font-family: 'Recursive', sans-serif;
 }
 mat-sidenav-container{
   height: 100%;
-  background-color: #f1f1f1;
+  background-color:#18191A;
 
   overflow:hidden;
   
@@ -22,7 +24,10 @@ mat-sidenav, mat-sidenav-content{
 }
 
 mat-sidenav{
-  background-color:white;
+  color:white;
+  background-color:#242526;
+  font-family: 'Cairo', sans-serif;
+  font-family: 'Recursive', sans-serif;
   width:250px;
 
 }

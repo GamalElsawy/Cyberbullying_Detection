@@ -5,11 +5,12 @@
             <img [src]="comment.user.Image" class="rounded-circle" height="50px" width="50px">
           </div>
           <h4 class="text-center">{{ comment.user.Name }}</h4>
-          <p class="text-center"><span>{{ comment.dateAdded | date}}&nbsp;{{ comment.dateAdded | date:'h:mm a ' }}</span></p>
+          <p class="text-center date"><span>{{ comment.dateAdded | date}}&nbsp;{{ comment.dateAdded | date:'h:mm a ' }}</span></p>
         </div>   
         <div class="user-comment-text col-sm-8 col-12">
           <p class="mt-2">{{comment.content}}</p>
         </div>            
      </div>
 </div>
+
  

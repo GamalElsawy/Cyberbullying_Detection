@@ -1,5 +1,8 @@
 .user-comment{
    overflow: hidden;
+   color:white;
+   font-family: 'Cairo', sans-serif;
+   font-family: 'Recursive', sans-serif;
 }
 .user-comment-info .img-box{
     border: 2px solid #FFC107;
@@ -12,4 +15,7 @@
     margin:0px 0px 0px 16px;
     font-weight: 500;
     text-transform: capitalize;   
+}
+.date{
+    font-size:10px;
 }

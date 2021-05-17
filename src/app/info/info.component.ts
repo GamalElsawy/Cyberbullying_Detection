@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../Models/user.model';
 import { UserService } from '../services/user.service';
+import { AuthGuardGuard } from '../auth/auth-guard.guard';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -13,7 +14,7 @@ export class InfoComponent implements OnInit {
 
   opened=false;
   
-  constructor(public userService:UserService) { }
+  constructor(public userService:UserService ) { }
 
   ngOnInit(): void {
     this.user = this.userService.get()[0];

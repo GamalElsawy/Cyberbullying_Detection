@@ -1,10 +1,16 @@
 .post{
-    margin-top: 100px;
+    margin-top: 50px;
     /*
     -webkit-box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
     -moz-box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
     box-shadow: -9px 10px 20px -9px rgba(0,0,0,0.75);
     */
+    border:2px solid rgb(78, 22, 92);
+    border-radius: 10px;
+    background-color:#242526;
+    font-family: 'Cairo', sans-serif;
+    font-family: 'Recursive', sans-serif;
+    
 }
 .img-box{
   /*
@@ -19,7 +25,8 @@
 
   textarea{
     resize:none;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Cairo', sans-serif;
+    font-family: 'Recursive', sans-serif;
     font-weight: 500;
     padding:10px;
     background:transparent;
@@ -33,6 +40,11 @@
   
   button{
     transition: all 0.5s;
+    padding:5px 20px;
+    margin-right: 30px;
+    background-color:#FFC107;
+    font-family: 'Cairo', sans-serif;
+    font-family: 'Recursive', sans-serif;
   }
   button:hover{
     transform: skew(15deg,0deg);

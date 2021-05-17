@@ -1,16 +1,19 @@
-<div class="post container border  p-2  position-relative col-xl-8 col-md-6 col-12">
+<div class="post container p-2  position-relative col-xl-8 col-md-6 col-12">
     <div class="row mt-4">
-      <div class="img-box ml-4">
-        <img [src]="account.Image" class="rounded-circle"  height="80px" width="80px">
-      </div>
-      <div class=" col-12 p-4">
-        <mat-form-field appearance="fill" class="col-12">
-          <mat-label>Write Your Post ?</mat-label>
-          <textarea matInput class="mb-2" rows="10"></textarea>
+      
+        <div class="img-box mx-auto">
+          <img [src]="account.Image" class="rounded-circle"  height="60px" width="60px">
+        </div>
+  
+      
+      <div class="text-white col-12 p-4 ">
+        <mat-form-field appearance="fill" class="col-12 text-white ">
+          <mat-label><span class="text-white">What's in Your Mind ?</span></mat-label>
+          <textarea matInput class="mb-2" rows="5"></textarea>
         </mat-form-field>
       </div>
       <div class=" col-12">
-        <button type="button" mat-flat-button class="btn btn-secondary ml-auto d-block">Post<mat-icon class="mb-1 ml-1">add_circle</mat-icon></button>
+        <button type="button" mat-flat-button class="btn ml-auto d-block">Post<mat-icon class="mb-1 ml-1">add_circle</mat-icon></button>
       </div>
     </div>
 </div>

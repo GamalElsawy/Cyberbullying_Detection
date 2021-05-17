@@ -16,6 +16,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './matrial.module';
 import { CommentsComponent } from './posts/post/comments/comments.component';
 import { CommentComponent } from './posts/post/comments/comment/comment.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
+
+
+
+import { ParticlesModule } from 'angular-particle';
+
 
 
 @NgModule({
@@ -26,7 +33,9 @@ import { CommentComponent } from './posts/post/comments/comment/comment.componen
     PostsComponent,
     PostComponent,
     CommentsComponent,
-    CommentComponent
+    CommentComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +44,8 @@ import { CommentComponent } from './posts/post/comments/comment/comment.componen
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ParticlesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

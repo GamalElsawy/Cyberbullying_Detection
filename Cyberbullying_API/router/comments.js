@@ -14,6 +14,6 @@ router
 	.get(/*advansedResults(Bootcamp, 'courses'),*/ getComments);
 	
 router.route('/:id').put(updateComment).delete(deleteComment);
-router.route('/:postId').post(/*protect, authorize('publisher', 'admin'),*/ CreateComment);
+router.route('/:postId').get(getComments).post(/*protect, authorize('publisher', 'admin'),*/ CreateComment);
 
 module.exports = router;

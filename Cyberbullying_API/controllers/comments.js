@@ -6,13 +6,13 @@ const advansedResults = require('../middleware/advansedResults');
 
 // @desc-> Get comment(s)
 // @route-> GET /api/v1/comments
-// @route-> GET /api/v1/posts/:postId/comments
+// @route-> GET /api/v1/comments/postId
 // @access-> Public
 exports.getComments = asyncHandler(async (req, res, next) => {
     let comments;
     if (req.params.postId) {
     // get posts related to specific post
-    comments = await Comment.find({ Post: req.params.postId });
+    comments = await Comment.find({ post: req.params.postId });
 
     return res
       .status(200)

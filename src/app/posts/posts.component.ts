@@ -11,13 +11,13 @@ export class PostsComponent implements OnInit {
 
   @Input() account;
 
-  posts : Post [] = [];
-  constructor(public postService:PostService) { }
+  posts: Post [] = [];
+  constructor(public postService: PostService) { }
 
   ngOnInit(): void {
-    this.posts = this.postService.get();
+    this.postService.getPosts();
   }
 
- 
+
 
 }

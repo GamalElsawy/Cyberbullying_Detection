@@ -13,11 +13,11 @@ export class InfoComponent implements OnInit {
   user:User;
 
   opened=false;
-  
+
   constructor(public userService:UserService ) { }
 
   ngOnInit(): void {
-    this.user = this.userService.get()[0];
+    this.userService.getUsers();
   }
 
 }

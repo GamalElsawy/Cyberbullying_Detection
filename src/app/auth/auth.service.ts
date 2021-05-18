@@ -1,9 +1,8 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-
-const apiUrl = 'http://localhost:3000/controllers/auth/';
+const apiUrl = 'http://localhost:5000/api/v1/auth/';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +11,17 @@ export class AuthService {
   @Output() isLoggedIn: EventEmitter<any> = new EventEmitter();
   loggedInStatus = false;
   redirectUrl: string;
+  now = new Date();
 
   constructor(private http: HttpClient) { }
 
   login(data: any): Observable<any> {
-    return this.http.post<any>(apiUrl + 'login',data).pipe(tap(_ => {
+    return this.http.post<any>(apiUrl + 'login', data).pipe(tap(_ => {
           this.isLoggedIn.emit(true);
           this.loggedInStatus = true;
         }),
         catchError(this.handleError('login', []))
-      );
+    );
   }
 
   logout(): Observable<any> {
@@ -42,6 +42,17 @@ export class AuthService {
         catchError(this.handleError('login', []))
       );
   }
+
+  // tslint:disable-next-line:typedef
+  getMe(){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    .set('Accept', 'application/json');
+    const options = { headers };
+    return this.http.get(apiUrl + 'me', options);
+  }
+
 
   // tslint:disable-next-line:typedef
   private handleError<T>(operation = 'operation', result?: T) {

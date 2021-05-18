@@ -1,29 +1,43 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../Models/post.model';
-import { UserService } from './user.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+
+const apiUrl = 'http://localhost:5000/api/v1/posts/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  user = [];
-  posts:Post[]=[
-    new Post(null," Maxime ut excepturi ullam officiis sapiente sed eius.",Date.now()),
-    new Post(null,"laborum nostrum repellendus vitae tenetur sint incidunt.",Date.now()),
-    new Post(null,"Lorem ipsum dolor, sit amet consectetur adipisicing elit.",Date.now()),
-  ];
-  constructor(private userService:UserService) { }
+  constructor(private http: HttpClient) { }
 
-  get(){
-    
-    this.user = this.userService.get();
-    this.user.forEach((element , i) => {
-      this.posts[i].user = element;
-    });
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(apiUrl).pipe( tap(_ => console.log('fetched Posts')),
+        catchError(this.handleError('getPosts', []))
+      );
+  }
 
-    return this.posts.slice();
-  
+  getPost(id: any): Observable<Post> {
+    const url = `${apiUrl}/${id}`;
+    return this.http.get<Post>(url).pipe(tap(_ => console.log(`fetched post by id=${id}`)),
+      catchError(this.handleError<Post>(`getPost id=${id}`))
+    );
+  }
+
+  addPost(post: Post): Observable<Post> {
+    return this.http.post<Post>(apiUrl, post).pipe(tap((prod: Post) => console.log(`added post w/ id=${post.id}`)),
+      catchError(this.handleError<Post>('addPost'))
+    );
+  }
+  // tslint:disable-next-line:typedef
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error); // log to console instead
+      console.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 
 }

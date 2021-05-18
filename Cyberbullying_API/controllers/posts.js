@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
 const { json } = require('express');
@@ -54,6 +55,9 @@ exports.createPost = asyncHandler(async (req, res, next) => {
 	}*/
 
 	//console.log(post);
+
+	req.body.user = await User.findById(req.body.user);
+	console.log(req.body);
 	const post = await Post.create(req.body);
 	
 

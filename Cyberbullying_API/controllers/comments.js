@@ -3,6 +3,7 @@ const asyncHandler = require('../middleware/async');
 const Comment = require('../models/Comment');
 const Post = require('../models/Post');
 const advansedResults = require('../middleware/advansedResults');
+const User = require('../models/User');
 
 // @desc-> Get comment(s)
 // @route-> GET /api/v1/comments
@@ -11,7 +12,7 @@ const advansedResults = require('../middleware/advansedResults');
 exports.getComments = asyncHandler(async (req, res, next) => {
     let comments;
     if (req.params.postId) {
-    // get posts related to specific post
+    // get comments related to specific post
     comments = await Comment.find({ post: req.params.postId });
 
     return res
@@ -24,24 +25,6 @@ exports.getComments = asyncHandler(async (req, res, next) => {
     res.status(404).json({success: true, data: comments});
   }
 });
-
-// @desc-> Get single comment
-// @route-> GET /api/v1/comment/:id
-// @access-> Public
-
-/*exports.getCourse = asyncHandler(async (req, res, next) => {
-  const course = await Course.findById(req.params.id).populate({
-    path: 'bootcamp',
-    select: 'name description',
-  });
-
-  if (!course) {
-    return next(
-      new ErrorResponse(`No course with the id of ${req.params.id}`, 404)
-    );
-  }
-  return res.status(200).json({ success: true, data: course });
-});*/
 
 // @desc-> Add comment
 // @route-> POST /api/v1/post/:postId/comments
@@ -59,7 +42,8 @@ exports.CreateComment = asyncHandler(async (req, res, next) => {
       )
     );
   }
-
+  //console.log(req.body.user);
+  req.body.user = await User.findById(req.body.user);
   const comment = await Comment.create(req.body);
 
   return res.status(200).json({ success: true, data: comment });
@@ -76,13 +60,6 @@ exports.updateComment = asyncHandler(async (req, res, next) => {
       new ErrorResponse(`No comment with the id of ${req.params.id}`, 404)
     );
   }
-
-  // Check if this user is the owner of this comment 
-  /*if(course.user.toString() !== req.user.id && req.user.role !== 'admin'){
-    return next(
-      new ErrorResponse(`User with ID ${req.user.id} is not authorized to update this course`, 401)
-    );
-  }*/
 
   comment = await Comment.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -103,13 +80,6 @@ exports.deleteComment = asyncHandler(async (req, res, next) => {
       new ErrorResponse(`No comment with the id of ${req.params.id}`, 404)
     );
   }
-
-  // Check if this user is the owner of this course 
-  /*if(course.user.toString() !== req.user.id && req.user.role !== 'admin'){
-    return next(
-      new ErrorResponse(`User with ID ${req.user.id} is not authorized to delete this course`, 401)
-    );
-  }*/
   
   await comment.remove();
   return res.status(200).json({ success: true, data: {} });

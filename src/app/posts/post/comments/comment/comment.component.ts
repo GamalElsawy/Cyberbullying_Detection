@@ -13,6 +13,7 @@ export class CommentComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.comment.createdAt = new Date(this.comment.createdAt);
   }
 
 }

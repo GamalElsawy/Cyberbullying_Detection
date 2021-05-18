@@ -1,29 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../Models/post.model';
-import { UserService } from './user.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of, Subject } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
+
+const apiUrl = 'http://localhost:5000/api/v1/posts';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  user = [];
-  posts:Post[]=[
-    new Post(null," Maxime ut excepturi ullam officiis sapiente sed eius.",Date.now()),
-    new Post(null,"laborum nostrum repellendus vitae tenetur sint incidunt.",Date.now()),
-    new Post(null,"Lorem ipsum dolor, sit amet consectetur adipisicing elit.",Date.now()),
-  ];
-  constructor(private userService:UserService) { }
+  posts:Post[]=[];
+  constructor(private http:HttpClient) { }
 
-  get(){
-    
-    this.user = this.userService.get();
-    this.user.forEach((element , i) => {
-      this.posts[i].user = element;
-    });
+  getPosts():Observable<Post[]>{
+    return this.http.get<Post[]>(apiUrl).pipe(
+    tap( _ => console.log('posts transfered done')),
+    catchError(this.handleError('posts', []))
+    );
+  }
 
-    return this.posts.slice();
-  
+  createPost(data: any): Observable<any> {
+    return this.http.post<any>(apiUrl, data)
+      .pipe(
+        tap(_ => console.log('create post')),
+        catchError(this.handleError('create post', []))
+      );
+  }
+
+
+   // tslint:disable-next-line:typedef
+   private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      console.error(error); // log to console instead
+      console.log(`${operation} failed: ${error.message}`);
+
+      return of(result as T);
+    };
   }
 
 }

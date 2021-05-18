@@ -22,6 +22,8 @@ import { RegistrationComponent } from './registration/registration.component';
 
 
 import { ParticlesModule } from 'angular-particle';
+import { UserService } from './services/user.service';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -45,9 +47,10 @@ import { ParticlesModule } from 'angular-particle';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ParticlesModule
+    ParticlesModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

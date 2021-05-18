@@ -2,34 +2,59 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { User } from '../Models/user.model';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [UserService]
 })
 export class LoginComponent implements OnInit {
 
   
   loginFG : FormGroup;
 
-  constructor(private _formBuilder : FormBuilder,private router:Router ,private authService:AuthService) { }
+  constructor(private _formBuilder : FormBuilder,
+              private router:Router,
+              private authService:AuthService,
+              private userService:UserService) { }
 
   ngOnInit(): void {
+    
+
+    this.authService.getMe().subscribe((res:any)=>{
+      let user : User =  new User(
+        res.data.username,
+        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        res.data.email,
+        res.data.phone,
+        res.data.address
+        );
+        console.log(user);
+      this.router.navigate(['home']);
+    },(err)=>{
+      console.log("this is Error",err);
+    });
+
+
     this.loginFG = this._formBuilder.group({
       email:['',[Validators.required,Validators.pattern("[a-z0-9!#$%&'*+//=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+//=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]],
       password:['',Validators.required],
-    })
+    });
+
   }
 
   onSubmit(form:NgForm) {
     this.authService.login(form).subscribe(res => {
-        console.log(res);
+        console.log("this is Response",res);
         if (res.token) {
           localStorage.setItem('token', res.token);
           this.router.navigate(['home']);
         }
       }, (err) => {
+        console.log("this is error");
         console.log(err);
       });
   }

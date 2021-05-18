@@ -60,7 +60,7 @@ ConfirmedValidator(controlName: string, matchingControlName: string){
       password:this.AuthInfoFG.get('password').value,
     }
     this.authService.register(data).subscribe(res => {
-        this.router.navigate(['login']);
+        this.router.navigate(['']);
       }, (err) => {
         console.log(err);
         alert(err.error);

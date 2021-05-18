@@ -7,18 +7,19 @@
          <div class="row">
            <div class="imgContainer col-12">
              <div class="imgBox">
-              <img [src]="user.Image" class="rounded-circle"  height="100px" width="100px">
+              <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded-circle"  height="100px" width="100px">
              </div>
            </div>
            <div class="about col-12 text-center">
-              <h2 >{{ user.Name }}</h2>
-              <h4>{{ user.EMail }}</h4>
-              <h4>{{ user.Address }}</h4>
-              <h4>{{ user.Phone }}</h4>
+            
+              <h2>{{ user.username }}</h2>
+              <h4>{{ user.email }}</h4>
+              <h4>{{ user.address }}</h4>
+              <h4>{{ user.phone }}</h4>
            </div>
          </div>
          <div class="col-12 mt-5">
-          <button routerLink="" mat-fab color="primary" class="d-block m-auto" aria-label="Example icon button with a delete icon">
+          <button (click)="logout()" mat-fab color="primary" class="d-block m-auto" aria-label="Example icon button with a delete icon">
             <mat-icon>meeting_room</mat-icon>
           </button>
          </div>
@@ -27,7 +28,8 @@
   
     </mat-sidenav>
     <mat-sidenav-content>
-      <app-posts [account] = "user"></app-posts>
+
+      <app-posts [user] = "user"></app-posts>
   
       <button class="btn hamburger hamburger--arrow d-block overflow-hidden  " [class.open]="opened" [class.is-active] = "opened" type="button" (click) = "sideNav.toggle();opened =!opened">
         <span class="hamburger-box ">

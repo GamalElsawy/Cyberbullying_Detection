@@ -1,9 +1,9 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-const apiUrl = 'http://localhost:3000/controllers/auth/';
+const apiUrl = 'http://localhost:5000/api/v1/auth/';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post<any>(apiUrl + 'logout', {})
+    return this.http.get<any>(apiUrl + 'logout')
       .pipe(
         tap(_ => {
           this.isLoggedIn.emit(false);
@@ -33,6 +33,15 @@ export class AuthService {
         }),
         catchError(this.handleError('logout', []))
       );
+  }
+
+  getMe(){
+    let headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization','Bearer '+localStorage.getItem('token'))
+    .set('Accept', 'application/json');
+    let options = { headers: headers };
+    return this.http.get(apiUrl+'me',options);
   }
 
   register(data: any): Observable<any> {

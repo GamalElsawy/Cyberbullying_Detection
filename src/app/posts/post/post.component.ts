@@ -12,6 +12,10 @@ export class PostComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.post.createdAt = new Date(this.post.createdAt);
   }
+
+  
+
 
 }

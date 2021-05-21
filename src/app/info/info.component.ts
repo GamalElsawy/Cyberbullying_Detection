@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
   providers: [UserService]
 })
 
-export class InfoComponent implements OnInit {
+export class InfoComponent implements OnInit  {
 
   user:any="";
-
+  subscribe=new Subscription();
 
   opened=false;
 
@@ -23,20 +23,23 @@ export class InfoComponent implements OnInit {
   
   constructor(public userService:UserService,private authService:AuthService , private router:Router ) {}
 
-  ngOnInit(): void {
-    this.userService.user.subscribe((res:any)=>{
-      console.log(res);
+    ngOnInit() {
+
+     this.subscribe = this.userService.user.subscribe((res:any)=>{
       this.user = {
         id:res.id,
         username:res.username,
-        image:"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        image:res.image,
         email:res.email,
         phone:res.phone,
         address:res.address,
+        password:""
       };
     });
-  }
+    
+    
 
+  }
   logout(){
     this.authService.logout().subscribe((res)=>{
       localStorage.setItem("token"," ");

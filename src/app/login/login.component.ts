@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   
   loginFG : FormGroup;
 
+  invalidlogin = false;
+
   constructor(private _formBuilder : FormBuilder,
               private router:Router,
               private authService:AuthService,
@@ -25,14 +27,9 @@ export class LoginComponent implements OnInit {
     
 
     this.authService.getMe().subscribe((res:any)=>{
-      let user : User =  new User(
-        res.data.username,
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        res.data.email,
-        res.data.phone,
-        res.data.address
-        );
-        console.log(user);
+        this.authService.loggedInStatus = true;
+        this.authService.isLoggedIn.emit(true);
+       
       this.router.navigate(['home']);
     },(err)=>{
       console.log("this is Error",err);
@@ -47,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form:NgForm) {
+    
     this.authService.login(form).subscribe(res => {
         console.log("this is Response",res);
         if (res.token) {
@@ -54,9 +52,15 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['home']);
         }
       }, (err) => {
+       
         console.log("this is error");
         console.log(err);
+        
       });
+      if(this.authService.loggedInStatus === false){
+        this.invalidlogin=true;
+        this.loginFG.reset();
+      }
   }
 
 

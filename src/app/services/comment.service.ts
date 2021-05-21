@@ -22,6 +22,10 @@ export class CommentService {
       );
   }
 
+  createComment(postId,comment):Observable<Comment>{
+    return this.http.post<any>(`${apiUrl}${postId}`,comment).pipe(tap(_=>{},catchError(this.handleError("create comment",[]))));
+  }
+
 
    // tslint:disable-next-line:typedef
    private handleError<T>(operation = 'operation', result?: T) {

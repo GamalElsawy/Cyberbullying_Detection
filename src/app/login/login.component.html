@@ -12,6 +12,7 @@
             </mat-card-header>
             <mat-card-content>
                 <form [formGroup]="loginFG" (ngSubmit) = "onSubmit(loginFG.value)" class="text-white">
+                    <mat-error  class="d-block ml-4" *ngIf="invalidlogin">* Invalid Login.</mat-error >
                     <mat-form-field appearance="fill" class="col-12">
                         <mat-label><span class="text-white"><b>E-Mail</b></span></mat-label>
                         <input matInput type="email" formControlName="email" placeholder="ex@example.com">

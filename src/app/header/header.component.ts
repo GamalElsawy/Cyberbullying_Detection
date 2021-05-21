@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../auth/auth.service';
+import { User } from '../Models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -16,25 +17,24 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUser();
+    //console.log("Random = ",this.userService.userAvatars[(Math.floor(Math.random() * (15 - 1 + 1)) + 1)-1]);
+  }
 
+  getUser(){
     this.authService.getMe().subscribe((res:any)=>{
-      var user = {
-        id:res.data._id,
-        username:res.data.username,
-        image:"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        email:res.data.email,
-        phone:res.data.phone,
-        address:res.data.address,
-        password:""
-      };
+      var user  = new User ();
+      user.id=res.data._id;
+      user.username=res.data.username;
+      user.image=this.userService.userAvatars[(Math.floor(Math.random() * (15 - 1 + 1)) + 1)-1];
+      user.email=res.data.email;
+      user.phone=res.data.phone;
+      user.address=res.data.address;
+      user.password="";
       this.userService.user.next(user);
-
     },(err)=>{
       console.log("this is Error",err);
     });
-
-
-    
   }
 
 

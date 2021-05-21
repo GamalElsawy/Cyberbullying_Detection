@@ -50,7 +50,7 @@ import { ToastrModule } from 'ngx-toastr';
     ParticlesModule,
     ToastrModule.forRoot()
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

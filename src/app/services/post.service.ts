@@ -16,10 +16,13 @@ export class PostService {
   constructor(private http:HttpClient) { }
 
   getPosts():Observable<Post[]>{
+
+    
     return this.http.get<Post[]>(apiUrl).pipe(
     tap( _ => console.log('posts transfered done')),
     catchError(this.handleError('posts', []))
     );
+    
   }
 
   createPost(data: any): Observable<any> {

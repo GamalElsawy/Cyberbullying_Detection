@@ -2,7 +2,7 @@
     <div class="row mt-4">
       
         <div class="img-box mx-auto">
-          <img [src]="user.image" class="rounded-circle"  height="60px" width="60px">
+          <img id="imgProf" [src]="user.image" class="rounded-circle"   height="60px" width="60px">
         </div>
   
       
@@ -26,5 +26,5 @@
 
 
 
-<app-post *ngFor="let post of posts" [post] = "post"></app-post>
+<app-post *ngFor="let post of posts" [post] = "post" [user]= "user"></app-post>
   

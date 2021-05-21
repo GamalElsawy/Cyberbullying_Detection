@@ -6,12 +6,4 @@ export class User {
   public password:String;
   public phone:string;
   public address:String;
-
-  constructor(name:string,Image:string,Email:string,Phone:string,Adress:string){
-    this.username=name;
-    this.image = Image;
-    this.email = Email;
-    this.phone = Phone;
-    this.address = Adress;
-  }
 }

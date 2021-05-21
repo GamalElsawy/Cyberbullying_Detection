@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+
 
 @Component({
   selector: 'app-post',
@@ -7,11 +9,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PostComponent implements OnInit {
 
+
+
+
+  @Input() user;
+  
   @Input() post;
   
-  constructor() { }
+  constructor(private userService:UserService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.post.createdAt = new Date(this.post.createdAt);
   }
 

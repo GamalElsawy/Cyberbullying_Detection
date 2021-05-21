@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from 'src/app/Models/post.model';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
-  styleUrls: ['./comment.component.css']
+  styleUrls: ['./comment.component.css'],
 })
 export class CommentComponent implements OnInit {
 
@@ -12,6 +12,7 @@ export class CommentComponent implements OnInit {
   
   constructor() { }
 
+  
   ngOnInit(): void {
     this.comment.createdAt = new Date(this.comment.createdAt);
   }

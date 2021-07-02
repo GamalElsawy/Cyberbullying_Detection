@@ -1,0 +1,32 @@
+<div class="post container p-2 col-xl-8 col-md-6 col-12 ">
+    <div class="row rowPost  mt-4">
+        <div class="user-info">
+            <div class="mb-3 img-box p-1 ">
+                <img [src]="post.user.image" class="rounded-circle" height="100px" width="100px">
+            </div>
+            <h4>{{ post.user.username }}</h4>
+        </div>
+      
+      <div class=" col-12 p-4">
+        <div class=" p-4 post-content">
+            <p>{{ post.content }}</p>
+        </div>
+        <p class="text-right "><span class="bg-secondary text-white p-2">{{ post.createdAt | date:'short'  }}</span></p>
+      </div>
+    </div>
+    <div class="col-12 overflow-hidden">
+      <mat-expansion-panel hideToggle [class.mat-expansion-panel] = "false">
+        <mat-expansion-panel-header>
+          <button mat-icon-button class="commentBtn">
+            <mat-icon>chat</mat-icon> 
+          </button>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent class="overflow-hidden">
+        <app-comments [post] = "post" [user]="user"></app-comments>
+        </ng-template>          
+      </mat-expansion-panel>
+    </div>
+</div>
+
+
+

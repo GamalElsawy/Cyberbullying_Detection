@@ -1,0 +1,41 @@
+<div class="login-container position-relative  overflow-hidden d-flex">
+    <particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
+    <div class="container login col-md-6 col-12 my-4 overflow-hidden">
+        <mat-card>
+            <mat-card-header >
+                <mat-card-title>
+                    <div class="logo">
+                        <img src="../assets/2.png" class="d-block m-auto">
+                    </div>
+                    <h1>Login</h1>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="loginFG" (ngSubmit) = "onSubmit(loginFG.value)" class="text-white">
+                    <mat-error  class="d-block ml-4" *ngIf="invalidlogin">* Invalid Login.</mat-error >
+                    <mat-form-field appearance="fill" class="col-12">
+                        <mat-label><span class="text-white"><b>E-Mail</b></span></mat-label>
+                        <input matInput type="email" formControlName="email" placeholder="ex@example.com">
+                    </mat-form-field>
+                    <div class="ml-4 " *ngIf="(loginFG.get('email').errors) &&(loginFG.get('email').touched || loginFG.get('email').dirty)">
+                        <mat-error  class="d-block" *ngIf="loginFG.get('email').errors.required">* This Field Required.</mat-error >
+                        <mat-error  class="d-block" *ngIf="loginFG.get('email').errors.pattern">* Please Enter E-Mail Correctly. </mat-error >
+                    </div>
+                    <mat-form-field appearance="fill" class="col-12">
+                        <mat-label><span class="text-white"><b>Password</b></span></mat-label>
+                        <input matInput formControlName="password" type="password">
+                    </mat-form-field>
+                    <div class="ml-4 " *ngIf="(loginFG.get('password').errors) &&(loginFG.get('password').touched || loginFG.get('password').dirty)">
+                        <mat-error  class="d-block" *ngIf="loginFG.get('password').errors.required">* This Field Required.</mat-error >
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit"  mat-raised-button color="accent" class="mr-4">Log In</button>
+                    </div>
+                </form>
+                <div class="reg">
+                    <a routerLink="registration" class="text-center d-block">I Don't Have An Account.</a>
+                 </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

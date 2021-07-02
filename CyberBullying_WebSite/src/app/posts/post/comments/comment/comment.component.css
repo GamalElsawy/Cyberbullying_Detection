@@ -1,0 +1,21 @@
+.user-comment{
+   overflow: hidden;
+   color:white;
+   font-family: 'Cairo', sans-serif;
+   font-family: 'Recursive', sans-serif;
+}
+.user-comment-info .img-box{
+    border: 2px solid #FFC107;
+    border-radius:60px;
+    background:linear-gradient(to right,#FFC107,purple);
+    width: 64px;
+    margin: auto;
+}
+.user-comment-info h4 , .user-comment-info p{
+    margin:0px 0px 0px 16px;
+    font-weight: 500;
+    text-transform: capitalize;   
+}
+.date{
+    font-size:10px;
+}

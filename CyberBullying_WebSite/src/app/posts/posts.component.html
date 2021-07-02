@@ -1,0 +1,41 @@
+<div class="post container p-2  position-relative col-xl-8 col-md-6 col-12">
+    <div class="row mt-4">
+      
+        <div class="img-box mx-auto">
+          <img id="imgProf" [src]="user.image" class="rounded-circle"   height="60px" width="60px">
+        </div>
+  
+      
+      <div class="text-white col-12 p-4 ">
+        <mat-form-field appearance="fill" class="col-12 text-white ">
+          <mat-label><span class="text-white">What's in Your Mind ?</span></mat-label>
+          <textarea matInput class="mb-2" rows="5" #postContent></textarea>
+        </mat-form-field>
+      </div>
+      <div class=" col-12">
+        
+        <button [disabled]="check"  (click)="addPost(postContent.value)" type="button" mat-flat-button class="btn ml-auto d-block">
+          <span [class.d-none]="!check" class="spinner-border text-warning"></span>
+          Post<mat-icon [class.d-none]="check" class="mb-1 ml-1">add_circle</mat-icon>
+        </button>
+      </div>
+
+      <mat-chip-list class="ml-4">
+        <mat-chip *ngFor="let class of classess" color="warn" selected>{{class}}</mat-chip>
+      </mat-chip-list>
+
+    </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<hr class="col-md-6 mt-5">
+
+
+<div *ngIf="posts.length===0" class="mb-5">
+   <p class="text-white text-center">No Posts Yet.</p>
+</div>
+
+
+<app-post *ngFor="let post of posts" [post] = "post" [user]= "user"></app-post>
+  

@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="content">
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" #sideNav>
+      <div class="position-relative">
+      <div class="cotainer mt-5 overflow-hidden position-fixed about">
+         <div class="row">
+           <div class="imgContainer col-12">
+             <div class="imgBox">
+              <img [src]="user.image" class="rounded-circle"  height="100px" width="100px">
+             </div>
+           </div>
+           <div class="about col-12 text-center">
+            
+              <h2>{{ user.username }}</h2>
+              <h4>{{ user.email }}</h4>
+              <h4>{{ user.address }}</h4>
+              <h4>{{ user.phone }}</h4>
+           </div>
+         </div>
+         <div class="col-12 mt-5">
+          <button (click)="logout()" mat-fab color="primary" class="d-block m-auto" aria-label="Example icon button with a delete icon">
+            <mat-icon>meeting_room</mat-icon>
+          </button>
+         </div>
+      </div>
+    </div>
+  
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+      <app-posts [user] = "user"></app-posts>
+  
+      <button class="btn hamburger hamburger--arrow d-block overflow-hidden  " [class.open]="opened" [class.is-active] = "opened" type="button" (click) = "sideNav.toggle();opened =!opened">
+        <span class="hamburger-box ">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+  
+      <!--<button class="btn" (click) = "sideNav.toggle()">>></button>-->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+</div>

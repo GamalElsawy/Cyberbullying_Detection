@@ -1,0 +1,30 @@
+
+<h5 *ngIf="comments.length===0" class="text-white text-center">No Comments Yet.</h5>
+
+<app-comment *ngFor="let c of comments" [comment] = "c"></app-comment>
+
+<div class="container mt-4 p-0">
+    <div class="row d-flex justify-content-around p-0">
+        <div class="imageBox col-sm-3 col-12 my-2 p-0">
+            <img [src]="user.image" class="rounded-circle d-block m-auto" height="50px" width="50px">
+        </div>
+        <div class="comment col-sm-6 p-0 text-white">
+            <mat-form-field appearance="fill" class="col-12">
+                <mat-label><span class="text-white">Your Comment ...</span></mat-label>
+                <textarea matInput #commentContent></textarea>
+              </mat-form-field>
+        </div>
+        <div class="send col-3 mt-2 ">
+            <button [disabled]="check"  (click)="addComment(commentContent.value)" mat-mini-fab color="primary">
+                <span [class.d-none]="!check" class="spinner-border text-warning"></span>
+                <mat-icon [class.d-none]="check">send</mat-icon>
+            </button>
+        </div>
+        
+        <mat-chip-list class="ml-5 col-md-12">
+            <mat-chip *ngFor="let class of classess" color="warn" selected>{{class}}</mat-chip>
+        </mat-chip-list>
+    </div>
+</div>
+
+

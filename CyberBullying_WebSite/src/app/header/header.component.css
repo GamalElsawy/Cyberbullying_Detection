@@ -1,0 +1,23 @@
+.navbar{
+    background-color: #b643eb !important;
+    height: 80px;
+    z-index: 100;
+    font-family: 'Cairo', sans-serif;
+font-family: 'Recursive', sans-serif;
+}
+
+.navbar .logo a{
+    position: absolute;
+    top:-60px;
+    left:70px;
+}
+
+button{
+    height: 50px;
+    transition: all 0.5s;
+}
+
+button:hover{
+    transform: skew(15deg,0deg);
+}
+

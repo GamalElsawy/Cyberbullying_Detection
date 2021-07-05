@@ -1,0 +1,100 @@
+<div class="registration-container position-relative  overflow-hidden d-flex">
+  <particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
+    <div class="container registration col-md-6 col-12 my-4 overflow-hidden">
+      <mat-card>
+        <mat-card-header >
+            <mat-card-title>
+                <div class="logo">
+                    <img src="../assets/2.png" class="d-block m-auto">
+                </div>
+                <h1>Login</h1>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-horizontal-stepper [linear]="true">
+            <mat-step  [stepControl]="UserInfoFG">
+                <form [formGroup]="UserInfoFG" >
+                    <ng-template matStepLabel><span class="text-white">Fill Out All Fields.</span></ng-template>
+                    <div class="col-10">
+                        <mat-form-field class="col-12">
+                        <mat-label class="text-white">UserName</mat-label>
+                        <input matInput type="text"  formControlName="username" class="d-block" required >
+                        </mat-form-field>
+                        <div class="ml-4 text-danger" *ngIf="(UserInfoFG.get('username').errors) &&(UserInfoFG.get('username').touched || UserInfoFG.get('username').dirty)">
+                          <mat-error  class="d-block" *ngIf="UserInfoFG.get('username').errors.required">* This Field Required.</mat-error >
+                          <mat-error  class="d-block" *ngIf="UserInfoFG.get('username').errors.minlength">* Username Length Must Be Grater 4 Characters. </mat-error >
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <mat-form-field class="col-12">
+                        <mat-label class="text-white">Address</mat-label>
+                        <textarea matInput formControlName="address" rows="5" required></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-10">
+                        <mat-form-field class="col-12">
+                        <mat-label class="text-white">Phone</mat-label>
+                        <input matInput type="text" formControlName="phone" rows="5" required>
+                        </mat-form-field>
+                        <div class="ml-4 text-danger" *ngIf="(UserInfoFG.get('phone').errors) &&(UserInfoFG.get('phone').touched || UserInfoFG.get('phone').dirty)">
+                          <mat-error  class="d-block" *ngIf="UserInfoFG.get('phone').errors.required">* This Field Required.</mat-error >
+                          <mat-error  class="d-block" *ngIf="UserInfoFG.get('phone').errors.pattern">* Please Enter Your Phone Number Correct. </mat-error >
+                          <mat-error  class="d-block" *ngIf="(UserInfoFG.get('phone').errors.minlength)||(UserInfoFG.get('phone').errors.maxlength)">* Phone Length Must Be 11 Numbers only. </mat-error >          
+                          </div>
+                      </div>
+                  </form>
+              <div>
+                <button mat-flat-button color="accent" class="ml-4" matStepperNext>Next</button>
+              </div>
+            </mat-step>
+            <mat-step [stepControl] = "AuthInfoFG">
+                <form [formGroup]="AuthInfoFG" >
+                    <ng-template matStepLabel><span class="text-white">Fill Out All Fields.</span></ng-template>
+                    <div class="col-10">
+                        <mat-form-field class="col-12">
+                        <mat-label class="text-white">E-mail</mat-label>
+                        <input matInput  type="email" formControlName="email" required>
+                        </mat-form-field>
+                        <div class="ml-4 text-danger" *ngIf="(AuthInfoFG.get('email').errors) &&(AuthInfoFG.get('email').touched || AuthInfoFG.get('email').dirty)">
+                          <mat-error  class="d-block" *ngIf="AuthInfoFG.get('email').errors.required">* This Field Required.</mat-error >
+                          <mat-error  class="d-block" *ngIf="AuthInfoFG.get('email').errors.pattern">* Please Enter Your E-Mail Correct. </mat-error >
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <mat-form-field class="col-12">
+                        <mat-label class="text-white">Password</mat-label>
+                        <input matInput  type="password" formControlName="password"  required>
+                        </mat-form-field>
+                        <div class="ml-4 text-danger" *ngIf="(AuthInfoFG.get('password').errors) &&(AuthInfoFG.get('password').touched || AuthInfoFG.get('password').dirty)">
+                          <mat-error  class="d-block" *ngIf="AuthInfoFG.get('password').errors.required">* This Field Required.</mat-error >
+                          <mat-error  class="d-block" *ngIf="AuthInfoFG.get('password').errors.pattern">* Password Must Be Mixture Of Uppercase , Lowercase  , Special Character And Greater Than 8 Character . </mat-error >
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <mat-form-field class="col-12">
+                        <mat-label class="text-white">Confrim Password</mat-label>
+                        <input matInput  type="password"  formControlName="confirmPassword" required>
+                        </mat-form-field>
+                        <div class="ml-4 text-danger" *ngIf="(AuthInfoFG.get('confirmPassword').errors) &&(AuthInfoFG.get('confirmPassword').touched || AuthInfoFG.get('confirmPassword').dirty)">
+                          <mat-error  class="d-block" *ngIf="AuthInfoFG.get('confirmPassword').errors.required">* This Field Required.</mat-error >
+                          <mat-error class="d-block" *ngIf="AuthInfoFG.get('confirmPassword').errors.confirmedValidator">* Password and Confirm Password Doesn't Matching. </mat-error>
+                        </div>
+                    </div>
+                  </form>
+                  <div>
+                    <button mat-flat-button color="accent" class="ml-4" matStepperNext>Next</button>
+                  </div>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel><span class="text-white">Done</span></ng-template>
+              <h2 class="text-center">Finally!!<br>Registration Completed You're Welcome.</h2>
+              <div class="col-12 d-flex justify-content-center">
+                <button (click)="onSubmit()" mat-flat-button color="accent" class="ml-4" >Login</button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </mat-card-content>
+    </mat-card>
+       
+    </div>
+</div>

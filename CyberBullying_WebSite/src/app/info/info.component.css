@@ -1,0 +1,93 @@
+.content{
+  position: relative;
+  top:0px;
+  left:0px;
+  font-family: 'Cairo', sans-serif;
+font-family: 'Recursive', sans-serif;
+}
+mat-sidenav-container{
+  height: 100%;
+  background-color:#18191A;
+
+  overflow:hidden;
+  
+  
+}
+mat-sidenav .about{
+  margin-right: -160px;
+}
+
+mat-sidenav, mat-sidenav-content{
+  padding:16px;
+  height: 100%;
+  
+}
+
+mat-sidenav{
+  color:white;
+  background-color:#242526;
+  font-family: 'Cairo', sans-serif;
+  font-family: 'Recursive', sans-serif;
+  width:250px;
+
+}
+
+
+.btn{
+  width: 42px;
+  height:42px;
+  background-color: purple;
+  color:white;
+  position: fixed;
+  top:368px;
+  left:0px;
+  z-index: 100;
+  transition: all 0.5s;
+}
+button.open{
+  left:250px;
+}
+.hamburger-box{
+  width:100%;
+  height:100%;
+}
+.hamburger-box{
+  position:absolute;
+  top:0;
+  left:0;
+
+  width: 30px;
+  margin: 0px 6px;
+  
+}
+.hamburger-inner{
+  width:100%;
+  height: 4px;
+  background-color: white;
+}
+.hamburger-inner::before , .hamburger-inner::after{
+  width:100%;
+  height: 4px;
+  background-color: white;
+} 
+.hamburger.is-active .hamburger-box{
+  width: 100%;
+  margin: 0px 1px;
+}
+
+.hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner:after, .hamburger.is-active .hamburger-inner:before {
+  background-color: white;
+  width:100%;
+}
+
+
+
+img{
+  background:linear-gradient(to right,#FFC107,purple);
+  display: block;
+  margin: auto;
+  border: 2px solid #FFC107;
+  border-radius: 60px;
+  padding:3px;
+}
+

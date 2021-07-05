@@ -31,6 +31,13 @@ const fileUpload = require('express-fileupload');
 const app = express();
 //app.use(logger);
 
+// Run Angular
+app.use(express.static('../CyberBullying_WebSite/dist/CyberBullying'));
+app.get('/', (req, res) => {
+    res.sendFile('index.html',{root:__dirname})
+});
+
+
 // Body parser
 app.use(express.json());
 
